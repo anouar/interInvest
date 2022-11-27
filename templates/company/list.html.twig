@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %} Groupe Inter Invest - Listes des entreprises{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="single-page">
+                <div class="form-content col-6 d-block mx-auto">
+                    <h1>Liste des entreprises</h1>
+                    {% for company in companies %}
+                        <h4><a href="{{ url('index_company', {'id' : company.id}) }}">{{ company.name }}</a></h4>
+                        <p><b>Code Siren: </b> {{ company.codeSiren }}</p>
+                        <p><b>Ville d'enregistrement: </b> {{ company.cityRegistration }}</p>
+                        <hr/>
+                    {% endfor %}
+                    <div class="navigation">
+                        {{ knp_pagination_render(companies) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

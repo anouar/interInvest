@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <section class="connection google">
+        <div class="container">
+            <div class="row">
+                <div class="single-page">
+                    <div class="col-6 d-block mx-auto">
+                        <h1>
+                            Création d'entreprise
+                        </h1>
+                        {% for message in app.flashes('success') %}
+                            {{ message }}
+                        {% endfor %}
+                        {% include 'company/form/_form_company.html.twig' with {'form' : form }%}
+                    </div>
+            </div>
+        </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

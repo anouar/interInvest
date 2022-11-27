@@ -1,0 +1,70 @@
+<div class="margin-top-15">
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="col-12 mb-2">
+        {{ form_label(form.name) }} *
+        {{ form_widget(form.name, {'attr': {'class': 'form-control shadow-none '}}) }}
+        <div class="parsley-error-container">{{ form_errors(form.name) }}</div>
+    </div>
+    <div class="col-12 mb-2">
+        {{ form_label(form.codeSiren) }} *
+        {{ form_widget(form.codeSiren, {'attr': {'class': 'form-control shadow-none '}}) }}
+        <small id="codeSirenHelp" class="form-text text-muted">le code siren doit contenir  9 chiffres.</small>
+        <div class="parsley-error-container">{{ form_errors(form.codeSiren) }}</div>
+    </div>
+    <div class="col-4 mb-2">
+        {{ form_widget(form.dateRegistration, {'attr': {'class': 'form-control js-datepicker'}}) }}
+        <div class="parsley-error-container">{{ form_errors(form.dateRegistration) }}</div>
+    </div>
+    <div class="col-12 mb-2">
+        {{ form_label(form.capital) }} *
+    </div>
+    <div class="col-4 mb-2 input-group">
+        {{ form_widget(form.capital, {'attr': {'class': 'form-control shadow-none '}}) }}
+        <div class="parsley-error-container">{{ form_errors(form.legalStatus) }}</div>
+    </div>
+    <div class="col-12 mb-2">
+        {{ form_label(form.legalStatus) }} *
+    </div>
+    <div class="col-12 mb-3">
+        {{ form_widget(form.legalStatus, {'attr': {'class': 'form-select'}}) }}
+        <div class="parsley-error-container">{{ form_errors(form.legalStatus) }}</div>
+    </div>
+    <div class="col-12 mb-2">
+        {{ form_label(form.cityRegistration) }} *
+    </div>
+    <div class="col-4 mb-2">
+        {{ form_widget(form.cityRegistration, {'attr': {'class': 'form-control shadow-none'}}) }}
+        <div class="parsley-error-container">{{ form_errors(form.cityRegistration) }}</div>
+    </div>
+    <div class="col-12 mb-2">
+        {{ form_label(form.dateRegistration) }} *
+    </div>
+    <div class="col-12 card mb-2">
+        <div class="card-header">
+            {{ form_label(form.adresses) }}
+        </div>
+        <div class="card-body">
+            <div class="col-12 mb-2">
+                <div id="company-address-collection"
+                     data-prototype="{{ form_widget(form.adresses.vars.prototype)|e }}"
+                     data-widget-counter="{{ form.adresses|length }}">
+                    {% if form.adresses|length > 0 %}
+                        {% for address in form.adresses %}
+                            {{ form_errors(address) }}
+                            {{ form_widget(address) }}
+                        {% endfor %}
+                    {% else %}
+                        {% do form.adresses.setRendered %}
+                    {% endif %}
+                </div>
+            </div>
+            <button type="button"
+                    class="add-another-collection-widget btn btn-outline-primary"
+                    data-list-selector="#company-address-collection"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter une addresse</button>
+        </div>
+    </div>
+    <div class="col-12 mt-3 align-content-right">
+        <input type="submit" class="btn btn-primary" name="save" value="Enregistrer">
+    </div>
+    {{ form_end(form) }}
+</div>

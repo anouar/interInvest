@@ -1,0 +1,65 @@
+{# templates/form/fields.html.twig #}
+{% block date_widget %}
+    <div class="input-group mb-3">
+        {{ form_widget(form, { 'attr': {'class': attr.class ~ ' datepicker '} }) }}
+        <div class="input-group-append">
+            <label class="input-group-text fa fa-calendar" for="{{ form.vars.id }}"></label>
+        </div>
+    </div>
+{% endblock date_widget %}
+
+{% block _company_adress_entry_widget %}
+    <div class="card p-3 mb-3">
+        <div class="col-12 mb-2">
+            {{ form_label(form.number) }}
+        </div>
+        <div class="col-2 mb-2">
+            {{ form_widget(form.number, {'attr': {'class': 'form-control shadow-none '}}) }}
+            <div class="parsley-error-container">{{ form_errors(form.number) }}</div>
+        </div>
+        <div class="col-12 mb-2">
+            {{ form_label(form.Type) }}
+        </div>
+        <div class="col-6 mb-2">
+            {{ form_widget(form.Type, {'attr': {'class': 'form-select'}}) }}
+            <div class="parsley-error-container">{{ form_errors(form.Type) }}</div>
+        </div>
+        <div class="col-12 mb-2">
+            {{ form_label(form.street) }}
+        </div>
+        <div class="col-12 mb-2">
+            {{ form_widget(form.street, {'attr': {'class': 'form-control shadow-none '}}) }}
+            <div class="parsley-error-container">{{ form_errors(form.street) }}</div>
+        </div>
+
+        <div class="col-12 mb-2">
+            {{ form_label(form.city) }}
+        </div>
+        <div class="col-12 mb-2">
+            {{ form_widget(form.city, {'attr': {'class': 'form-control shadow-none '}}) }}
+            <div class="parsley-error-container">{{ form_errors(form.street) }}</div>
+        </div>
+
+        <div class="col-12 mb-2">
+            {{ form_label(form.codePostal) }}
+        </div>
+        <div class="col-4 mb-2">
+            {{ form_widget(form.codePostal, {'attr': {'class': 'form-control shadow-none '}}) }}
+            <div class="parsley-error-container">{{ form_errors(form.street) }}</div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block datetime_widget %}
+    <div class='input-group date'>
+        {{ form_widget(form, { 'attr': {'class': attr.class ~ ' form-control '} }) }}
+    </div>
+{% endblock datetime_widget %}
+{% block money_widget %}
+    <div class='input-group'>
+        {{ form_widget(form, { 'attr': {'class': attr.class ~ ' form-control '} }) }}
+        <div class="input-group-append">
+            <label class="input-group-text fa fa-euro" for="{{ form.vars.id }}"></label>
+        </div>
+    </div>
+{% endblock money_widget %}

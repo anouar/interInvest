@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+       {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+{% set route_name = app.request.attributes.get('_route') %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('app_main') }}"><img src="{{ asset('build/images/logo_interinvest_white.svg') }}" alt="logo Inter Invest" height="35"/></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a {% if route_name == "app_main" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ url('app_main') }}">Accueil</a></li>
+                <li class="nav-item"><a {% if route_name == "list_company" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ url('list_company') }}">Liste des entreprises</a></li>
+                <li class="nav-item"><a {% if route_name == "new_company" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href="{{ url('new_company') }}">Créer une entreprise</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success ">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger test ">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% block body %}{% endblock %}
+    </div>
+</div>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Anouar SOUID</p></div>
+</footer>
+</body>
+</html>

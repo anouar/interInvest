@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+{% block title %} Groupe Inter Invest - {{ company.name }}!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="single-page">
+                <div class="mb-5">
+                    <h2>Historique de {{ company.name }}</h2>
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                    <div class="form-group row">
+                        <div class="col-3">
+                            {{ form_widget(form.createdAt) }}
+                        </div>
+                        <div class="col-3">
+                            <input type="submit" class="btn btn-primary" name="save" value="Rechercher">
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+
+                <h2>{{ company.name }} - {{ company.codeSiren }} <a class="btn btn-outline-danger" href="{{ url('edit_company', {'id' : id }) }}"><i class="fa fa-edit"></i> Modifier</a></h2>
+
+                <div class="d-block mx-auto mb-5">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="information-tab" data-bs-toggle="tab"
+                                    data-bs-target="#information" type="button" role="tab" aria-controls="information"
+                                    aria-selected="true">Informations générales
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="adresses-tab" data-bs-toggle="tab" data-bs-target="#adresses"
+                                    type="button" role="tab" aria-controls="adresses" aria-selected="false">Adresses
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="information" role="tabpanel"
+                             aria-labelledby="information-tab">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Dénomination</th>
+                                    <td>{{ company.name }}
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Code SIREN:</th>
+                                    <td>{{ company.codeSiren }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Capital</th>
+                                    <td>{{ company.capital }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Nature juridique</th>
+                                    <td>{{ company.legalStatus }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Date d'immatriculation</th>
+                                    <td>{{ company.dateRegistration | date('d/m/Y') }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Ville d'enregistrement</th>
+                                    <td>{{ company.cityRegistration }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Date de dernière mise à jourt</th>
+                                    <td>{{ company.updatedAt | date('d/m/Y') }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="adresses" role="tabpanel" aria-labelledby="adresses-tab">
+                            <div class="mt-2 mb-5">
+                                {% for key,adress in company.adresses %}
+                                    <p><b>Adresse {{ key + 1 }}</b> : {{ adress.number }} {{ adress.type }} {{ adress.street }} {{ adress.city }} {{ adress.codePostal }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

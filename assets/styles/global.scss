@@ -1,0 +1,14 @@
+$primary: darken(#428bca, 20%);
+@import "~bootstrap/scss/bootstrap";
+footer{
+    width: 100%;
+    z-index: 1;
+}
+.single-page{
+    min-height: 600px;
+    margin-bottom: 50px;
+}
+.parsley-error-container {
+    color: #900;
+}
+

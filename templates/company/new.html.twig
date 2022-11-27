@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %} Groupe Inter Invest - Création d'entreprise!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="single-page">
+                <div class="form-content col-6 d-block mx-auto">
+                    <h1>
+                        Créer une entreprise
+                    </h1>
+                    {% include 'company/form/_form_company.html.twig' with {'form' : form }%}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

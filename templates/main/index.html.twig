@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %} Groupe Inter Invest - Accueil!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <section class="connection google">
+        <div class="container">
+            <div class="row">
+                <div class="single-page">
+                    <h1 class="text-center mb-5"> Bienvenue - Welcome - Welkom - Bonvenon - Benvenuto</h1>
+                    <div class="text-center col-lg-12 col-xl-12 col-md-12 d-block mx-auto">
+                        <h4 class="mb-5">Retrouvez toutes les informations sur une entreprise</h4>
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                        <div class="form-group mt-5 justify-content-center row">
+                            <div class="col-4">
+                                {{ form_widget(form.search, {'attr' : {'class' : 'form-control'}}) }}
+                            </div>
+                            <div class="col-1">
+                                <input type="submit" class="btn btn-primary" name="save" value="Rechercher">
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
