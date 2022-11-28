@@ -25,10 +25,10 @@ yarn watch
 ```shell 
 php bin/phpunit
 ```
+Le site est accessible en local sous l'url suivante:
+https://localhost    
 
 ```shell 
-Le site est accessible en local sous l'url suivante:
-https://127.0.0.1     
 Accées base de données  via adminer:
 http://localhost:8080/   
 serveur:database
